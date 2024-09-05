@@ -9,9 +9,6 @@ export default function Layout({ config, children }) {
       <header>
         <Header config={config} />
       </header>
-      {/* <section>
-        <NotFound config={config} />
-      </section> */}
 
       <main>{children}</main>
       <footer>
