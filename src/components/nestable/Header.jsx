@@ -1,22 +1,20 @@
 import React from "react";
 import Link from "next/link";
-import { storyblokEditable, StoryblokComponent } from "@storyblok/react";
-import Footer from "@/components/nestable/Footer";
+import { storyblokEditable } from "@storyblok/react";
 
 const Header = ({ config = {} }) => {
   const logotype = config?.content?.logotype || { filename: "" };
-  console.log(logotype);
   const navItems = config?.content?.header_navigation || [];
-  console.log(config);
+
   return (
     <header className="bg-white shadow-md">
-      <div className="container mx-auto flex justify-between items-center p-4">
+      <div className="container mx-auto flex flex-wrap justify-between items-center p-4">
         {logotype.filename && (
           <img src={logotype.filename} alt="Logo" className="h-16 w-20" />
         )}
 
-        <nav>
-          <ul className="flex space-x-20 m-5">
+        <nav className="w-full md:w-auto">
+          <ul className="flex flex-col md:flex-row space-y-2 md:space-y-0 md:space-x-20 m-5">
             {navItems.map((item) => (
               <li key={item._uid} {...storyblokEditable(item)}>
                 {item.url?.linktype === "story" ? (
@@ -25,7 +23,9 @@ const Header = ({ config = {} }) => {
                     passHref
                     legacyBehavior
                   >
-                    <a>{item.name}</a>
+                    <a className="text-gray-800 hover:text-blue-500">
+                      {item.name}
+                    </a>
                   </Link>
                 ) : (
                   <a

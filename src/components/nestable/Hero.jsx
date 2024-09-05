@@ -7,24 +7,23 @@ const Hero = ({ blok }) => {
     <>
       <section
         {...storyblokEditable(blok)}
-        className="hero bg-white p-8 rounded-lg shadow-md flex items-center"
+        className="hero bg-white p-8 rounded-lg shadow-md flex flex-col md:flex-row items-center"
       >
-        <div className="w-2/3 p-10">
-          {" "}
-          <h1 className="hero-heading text-5xl font-bold mb-4 ">
+        <div className="w-full md:w-2/3 p-4 md:p-10">
+          <h1 className="hero-heading text-3xl md:text-5xl font-bold mb-4">
             {blok.heading}
           </h1>
-          <p className="hero-text text-lg mb-6">{blok.text}</p>
+          <p className="hero-text text-base md:text-lg mb-6 ">{blok.text}</p>
           {blok.button_text && blok.button_url && (
             <a
               href={blok.button_url.url}
-              className="hero-button inline-block px-6 py-2 bg-black text-white font-semibold rounded-lg hover:bg-gray-800 transition duration-300"
+              className="hero-button inline-block px-6 py-2 bg-blue-500 text-white font-semibold rounded-lg hover:bg-gray-600 transition duration-300"
             >
               {blok.button_text}
             </a>
           )}
         </div>
-        <div className="w-1/2">
+        <div className="w-full md:w-1/2 mt-4 md:mt-0">
           <img
             src={blok.image.filename}
             alt={blok.image.alt}
