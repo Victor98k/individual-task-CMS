@@ -13,10 +13,7 @@ export class StoryblokCMS {
     if (!params) return {};
     const uri = params?.slug?.join("/");
     const storyUrl = "cdn/stories/" + uri;
-    const { data } = await this.sbGet(
-      storyUrl,
-      this.getDefaultSBParams()
-    );
+    const { data } = await this.sbGet(storyUrl, this.getDefaultSBParams());
     return data.story;
   }
 
@@ -28,6 +25,36 @@ export class StoryblokCMS {
     };
   }
 
+  // Nora ändring
+  // static async getConfig() {
+  //   try {
+  //     const { data } = await this.sbGet(
+  //       "cdn/stories/config",
+  //       this.getDefaultSBParams()
+  //     );
+  //     // Returnerar hela innehållet av storyn.
+  //     return data?.story?.content || {};
+  //   } catch (error) {
+  //     console.log("CONFIG ERROR", error);
+  //     return {};
+  //   }
+  // }
+
+  //Chrilles kod
+  // static async getConfig() {
+  //   try {
+  //     const { data } = await this.sbGet(
+  //       "cdn/stories/config",
+  //       this.getDefaultSBParams()
+  //     );
+  //     return data?.story;
+  //   } catch (error) {
+  //     console.log("CONFIG ERROR", error);
+  //     return {};
+  //   }
+  // }
+
+  //Min getConfiq
   static async getConfig() {
     try {
       const { data } = await this.sbGet(
@@ -37,6 +64,15 @@ export class StoryblokCMS {
       return data?.story;
     } catch (error) {
       console.log("CONFIG ERROR", error);
+      if (error.response) {
+        // console.log("Response data:", error.response.data);
+        // console.log("Response status:", error.response.status);
+        // console.log("Response headers:", error.response.headers);
+      } else if (error.request) {
+        console.log("Request data:", error.request);
+      } else {
+        console.log("Error", error.message);
+      }
       return {};
     }
   }
