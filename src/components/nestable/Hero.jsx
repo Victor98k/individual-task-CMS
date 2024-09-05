@@ -13,7 +13,7 @@ const Hero = ({ blok }) => {
           <h1 className="hero-heading text-3xl md:text-5xl font-bold mb-4">
             {blok.heading}
           </h1>
-          <p className="hero-text text-base md:text-lg mb-6 ">{blok.text}</p>
+          <b className="hero-text text-base md:text-lg mb-6 ">{blok.text}</b>
           {blok.button_text && blok.button_url && (
             <a
               href={blok.button_url.url}

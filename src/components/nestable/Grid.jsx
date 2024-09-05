@@ -15,9 +15,9 @@ const Grid = ({ blok }) => {
               <img
                 src={column.grid_image.filename}
                 alt={column.grid_image.alt}
-                className="w-full h-auto object-cover rounded-lg mb-4 sm:mb-6"
+                className="w-full h-auto object-cover rounded-lg mb-4 sm:mb-6 transition-transform duration-300 transform hover:scale-105"
               />
-              <p className="text-center text-lg">{column.grid_text}</p>
+              <h1 className="text-center text-lg">{column.grid_text}</h1>
               <p className="text-center text-sm">{column.grid_text_area}</p>
             </div>
           ))}
